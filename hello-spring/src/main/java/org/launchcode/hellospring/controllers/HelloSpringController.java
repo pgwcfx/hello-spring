@@ -25,10 +25,10 @@ public class HelloSpringController {
     }
 
     //lives /hello
-    //Handles request of the form /hello?name=LaunchCode
+    //Handles request of the form /hello?name=LaunchCode&languages=English
     @RequestMapping(method = {RequestMethod.POST,RequestMethod.GET}, value="hello")
-    public String helloWithQueryParam(@RequestParam String name, /*@RequestParam String languages,*/ Model model){
-        /*switch (languages) {
+    public String helloWithQueryParam(@RequestParam String name, @RequestParam String languages, Model model){
+        switch (languages) {
             case "Spanish":
                 String greeting1 = "Hola, " + name + "!";
                 model.addAttribute("greeting",greeting1);
@@ -49,7 +49,7 @@ public class HelloSpringController {
                 String greeting5 = "Ola, " + name + "!";
                 model.addAttribute("greeting",greeting5);
                 return "hello";
-        }*/
+        }
         model.addAttribute("greeting","Hello, " + name + "!");
         return "hello";
     }
@@ -71,9 +71,9 @@ public class HelloSpringController {
     @ResponseBody
     public String createMessage(){
         return "<html>" +
-                "<h1>Skills Tracker</h1>" +
+                "<h1>Controllers and Routing</h1>" +
                 "<body>" +
-                "<h2>Programming languages</h2>" +
+                "<h2>languages</h2>" +
                 "<form action='hello' method='post'>" +
                 "<input type='text' name='name'>" +
                 "<input type='submit' value='Greet me!'>" +
